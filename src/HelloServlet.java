@@ -22,8 +22,12 @@ public class HelloServlet extends HttpServlet {
 
         // [forward]
         req.setAttribute("formRequestDto", formRequestDto);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("sample");
-        dispatcher.forward(req, resp);
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("sample");
+//        dispatcher.forward(req, resp);
+
+        // [sendRedirect]
+        req.getSession().setAttribute("formRequestDto", formRequestDto);
+        resp.sendRedirect("sample");
     }
 
 }

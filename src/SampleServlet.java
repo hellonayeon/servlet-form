@@ -1,3 +1,5 @@
+import dto.FormRequestDto;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +27,23 @@ public class SampleServlet extends HttpServlet {
         pw.println("<body>");
 
         // [ Forward (Request Attribute) ]
-        String name = req.getParameter("name");
-        String age = req.getParameter("age");
-        String sex = req.getParameter("sex");
-        String[] hobbies = req.getParameterValues("hobby");
+//        String name = req.getParameter("name");
+//        String age = req.getParameter("age");
+//        String sex = req.getParameter("sex");
+//        String[] hobbies = req.getParameterValues("hobby");
+//
+//        pw.println("<p>이름: " + name + "</p>");
+//        pw.println("<p>연령대: " + age + "</p>");
+//        pw.println("<p>성별: " +sex + "</p>");
+//        pw.println("<p>취미: " + Arrays.toString(hobbies) + "</p>");
 
-        pw.println("<p>이름: " + name + "</p>");
-        pw.println("<p>연령대: " + age + "</p>");
-        pw.println("<p>성별: " +sex + "</p>");
-        pw.println("<p>취미: " + Arrays.toString(hobbies) + "</p>");
+        // [ sendRedirect (Session Attribute) ]
+        FormRequestDto formRequestDto = (FormRequestDto) req.getSession().getAttribute("formRequestDto");
+
+        pw.println("<p>이름: " + formRequestDto.getName() + "</p>");
+        pw.println("<p>연령대: " + formRequestDto.getAge() + "</p>");
+        pw.println("<p>성별: " + formRequestDto.getSex() + "</p>");
+        pw.println("<p>취미: " + Arrays.toString(formRequestDto.getHobbies()) + "</p>");
 
         pw.println("</body>");
 

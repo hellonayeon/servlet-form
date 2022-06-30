@@ -16,4 +16,20 @@ public class FormRequestDto {
         this.sex = sex;
         this.hobbies = hobbies;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String[] getHobbies() {
+        return hobbies;
+    }
 }
