@@ -1,5 +1,6 @@
 import dto.FormRequestDto;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +23,9 @@ public class SampleServlet extends HttpServlet {
         for (String h : formRequestDto.getHobbies()) {
             url.append("&hobby=").append(h);
         }
+        System.out.println("created url = " + url);
 
-        System.out.println("url = " + url);
-
-        req.getRequestDispatcher(url.toString()).forward(req, resp);
+        RequestDispatcher dispatcher = req.getRequestDispatcher(url.toString());
+        dispatcher.forward(req, resp);
     }
 }
