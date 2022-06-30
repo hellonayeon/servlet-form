@@ -13,19 +13,7 @@ public class SampleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("SampleServlet doGet.");
 
-        FormRequestDto formRequestDto = (FormRequestDto) req.getAttribute("formRequestDto");
-
-        // Query Parameter 생성
-        StringBuilder url = new StringBuilder("detail.html?")
-                            .append("name=").append(formRequestDto.getName())
-                            .append("&age=").append(formRequestDto.getAge())
-                            .append("&sex=").append(formRequestDto.getSex());
-        for (String h : formRequestDto.getHobbies()) {
-            url.append("&hobby=").append(h);
-        }
-        System.out.println("created url = " + url);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher(url.toString());
+        RequestDispatcher dispatcher = req.getRequestDispatcher("detail.html");
         dispatcher.forward(req, resp);
     }
 }
