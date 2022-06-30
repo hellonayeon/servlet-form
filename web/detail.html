@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Servlet Work</title>
+</head>
+<body>
+<h3>Form Detail</h3>
+
+이름: <span id="name-span"></span> <br><br>
+연령대: <span id="age-span"></span> <br><br>
+성별: <span id="sex-span"></span> <br><br>
+취미: <span id="hobby-span"></span> <br><br>
+
+<script type="text/javascript">
+
+const url = new URL(window.location.href);
+const params = url.searchParams;
+
+const name = params.get("name");
+const age = params.get("age");
+const sex = params.get("sex");
+const hobbies = params.getAll("hobby");
+console.log (name + " " + age + " " + sex + " " + hobbies);
+
+document.getElementById("name-span").innerHTML = name;
+document.getElementById("age-span").innerHTML = age;
+document.getElementById("sex-span").innerHTML = sex;
+document.getElementById("hobby-span").innerHTML = hobbies;
+
+</script>
+</body>
+</html>

@@ -17,17 +17,12 @@ public class HelloServlet extends HttpServlet {
         String age = req.getParameter("age");
         String sex = req.getParameter("sex");
         String[] hobbies = req.getParameterValues("hobby");
-
         FormRequestDto formRequestDto = new FormRequestDto(name, age, sex, hobbies);
 
         // [forward]
         req.setAttribute("formRequestDto", formRequestDto);
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("sample");
-//        dispatcher.forward(req, resp);
-
-        // [sendRedirect]
-        req.getSession().setAttribute("formRequestDto", formRequestDto);
-        resp.sendRedirect("sample");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("sample");
+        dispatcher.forward(req, resp);
     }
 
 }
